@@ -49,7 +49,14 @@ exports.login = async (req, res) => {
         const token = jwt.sign({ _id: data._id, name: data.name }, process.env.JWT_KEY, { expiresIn: "1d" })
 
         // send secure cookie
-        res.cookie("ADMIN", token, { maxAge: 1000 * 60 })
+        res.cookie("ADMIN", token, {
+            maxAge: 1000 * 60,
+            httpOnly: true,
+            secure: process.env.NODE_ENV === "production"
+
+            // for local hoast is false and for live serverr is true 
+
+        })
 
         res.status(200).json({
             message: "user login success",

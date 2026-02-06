@@ -4,7 +4,8 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react"
 export const todoApi = createApi({
     reducerPath: "todoApi",
     baseQuery: fetchBaseQuery({
-        baseUrl: "http://localhost:5000/api/todo",
+        // baseUrl: "http://localhost:5000/api/todo",
+        baseUrl: `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/todo`,
         credentials: "include"
     }),
     tagTypes: ["todo"],
