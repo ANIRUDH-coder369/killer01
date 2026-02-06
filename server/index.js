@@ -17,17 +17,14 @@ const app = express()
 
 // app.use(limiter)
 
-// app.use(cors({
-//     origin:
-//         process.env.NODE_ENV === "production"
-//             ? "https://killer01-fbqz.vercel.app"
-//             : "http://localhost:3000",
-//     credentials: true
-// }))
 app.use(cors({
-    origin: "http://localhost:3000",
+    origin:
+        process.env.NODE_ENV === "production"
+            ? "https://killer01-m3ih-client.vercel.app"
+            : "http://localhost:3000",
     credentials: true
 }))
+
 
 app.use(express.json())
 app.use(cookieParser())
